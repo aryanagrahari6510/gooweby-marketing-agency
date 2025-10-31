@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Projects</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at center, #111 0%, #000 100%);
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-top: 50px;
+      color: #fff;
+      text-shadow: 0 0 15px #0ff;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      padding: 80px;
+      justify-content: center;
+    }
+
+    .card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+      transition: all 1s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-content h3 {
+      margin: 10px 0;
+      color: #0ff;
+    }
+
+    .card-content a {
+      display: inline-block;
+      margin-top: 8px;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(90deg, #0ff, #0077ff);
+      padding: 10px 25px;
+      border-radius: 25px;
+      transition: 0.3s;
+    }
+
+    .card-content a:hover {
+      background: linear-gradient(90deg, #0077ff, #0ff);
+      transform: scale(1.1);
+    }
+
+    /* Cursor effect */
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,255,0.5), transparent);
+      pointer-events: none;
+      mix-blend-mode: screen;
+      transition: transform 0.1s ease;
+      z-index: 9999;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>My Projects</h1>
+
+  <div class="projects">
+    <div class="card">
+      <img src="https://i.imgur.com/xK8aY9T.jpeg" alt="Taste of India">
+      <div class="card-content">
+        <h3>Taste of India</h3>
+        <a href="https://www.facebook.com/tasteofindiaky" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/igQqN0P.jpeg" alt="Skater Gaurav">
+      <div class="card-content">
+        <h3>Skater Gaurav</h3>
+        <a href="https://www.instagram.com/skater_gaurav" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/zP1HQeK.jpeg" alt="Tina Mehta">
+      <div class="card-content">
+        <h3>Tina Mehta</h3>
+        <a href="https://www.instagram.com/tinamehtaaaa" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/NrK6bKZ.jpeg" alt="X1X Crew">
+      <div class="card-content">
+        <h3>X1X Crew</h3>
+        <a href="https://www.instagram.com/x1x_crew" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/nx1vUeC.jpeg" alt="Shreya Chakraborty">
+      <div class="card-content">
+        <h3>Shreya Chakraborty</h3>
+        <a href="https://www.instagram.com/shreya_chakraborty11111" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/8E2UoEZ.jpeg" alt="Kara Laser NY">
+      <div class="card-content">
+        <h3>Kara Laser NY</h3>
+        <a href="https://www.instagram.com/kara_laser_ny" target="_blank">View Project</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="cursor"></div>
+
+  <script>
+    // Scroll glow effect
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+
+    // Cursor glow effect
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      cursor.style.transform = 'scale(1.3)';
+      setTimeout(() => cursor.style.transform = 'scale(1)', 100);
+    });
+  </script>
+</body>
+</html>
